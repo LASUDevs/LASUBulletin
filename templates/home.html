@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for new in news %}
+    <div class="news">
+        <h2><a href="{% url 'details' slug=new.slug %}">{{ new.title }}</a></h2>
+        <p>{{ new.snippet }}</p>
+        <p>{{ new.date_created }}</p>
+    </div>
+{% endfor %}
+
+{% endblock content %}

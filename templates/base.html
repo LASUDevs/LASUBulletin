@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lasu Bulletin</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block style %}
+    
+    {% endblock style %}
+</head>
+<body>
+    <header>
+       <nav>
+           <li>LASU BULLETIN</li>
+           <li><a href="{% url 'home' %}">Home</a></li>
+           
+            {% if user.is_authenticated %}
+            <li>
+                    <form action="{% url 'log_out' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+                <li><a href={% url 'sign_up' %}>Sign up other admin</a></li>
+                <li><a href={% url 'create_news' %}>Create News +</a></li>
+            {% else %}
+                <li><a href={% url 'login' %}>login as admin</a></li>
+            {% endif %}
+           
+
+       </nav> 
+    </header>
+    {% block content %}
+    
+    {% endblock content %}
+    
+</body>
+</html>
