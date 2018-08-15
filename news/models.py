@@ -12,6 +12,6 @@ class News(models.Model):
         return self.title
 
     def snippet(self):
-        return self.news[:25], "...."
+        return self.news[:45] + "..."
     
 
