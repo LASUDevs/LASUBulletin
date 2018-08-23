@@ -1,18 +1,26 @@
+{% load bootstrap4 %} 
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{# Load CSS and JavaScript #}
+{% bootstrap_css %} 
+
+ 
+ {% bootstrap_javascript jquery='full' %} 
+ {# Displaydjango.contrib.messages as Bootstrap alerts #}
+  {% bootstrap_messages %}
+<!Doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lasu Bulletin</title>
-    
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-     {% block style %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/files.js' %}"></script>
+  {% block styles %}
 
-     {% endblock style %}
-</head>
+  {% endblock %}
+  </head>
 
 <body>
     <header>
@@ -28,32 +36,33 @@
                         </li>
                         
                       </ul>
-                      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    </div>
+                      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarCollapse">
                             <ul class="navbar-nav ml-auto">
                                   {% if user.is_authenticated %}
-                                  <li>
+                                  <li class="nav-item">
                                       <form action="{% url 'log_out' %}" method="post">
                                           {% csrf_token %}
                                           <button type="submit">Logout</button>
                                       </form>
                                   </li>
-                                  <li>
-                                      <a href={% url 'sign_up' %}>Sign up other admin</a>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href={% url 'sign_up' %}>Sign up other admin</a>
                                   </li>
-                                  <li>
-                                      <a href={% url 'create_news' %}>Create News +</a>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href={% url 'create_news' %}>Create News +</a>
                                   </li>
                                   {% else %}
-                                  <li>
-                                      <a href={% url 'login' %}>login as admin</a>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href={% url 'login' %}>login as admin</a>
                                   </li>
                                   {% endif %}
                             </ul>
                         </div>
-                    </div>
+                    
                     
                   </nav>
-                </header>
+                  
        
 
     </header>

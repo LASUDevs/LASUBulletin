@@ -1,26 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-{% endblock style %}
-{% block content %}
-{% for new in news %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
-<div class="row">
+{% block content %}
+
+<div class="row news">
+        {% for new in news %}
     <div class="col-sm-4">
-        <div class="news">
-            <h2>
+            
+            <h3>
                 <a href="{% url 'details' slug=new.slug %}">
                     {{ new.title }}
                 </a>
-            </h2>
-            <p>{{ new.snippet }}</p>
-            <p>{{ new.date_created }}</p>
-        </div>
+            </h3>
+            <img src="{{new.image.url}}" alt="" width="100%" height="auto">
+            <p>
+                {{ new.snippet }}
+                <a href="{% url 'details' slug=new.slug %}">
+                        <b>read more</b>
+                    </a>
+            </p>
+            <p><b>{{ new.date_created }}</b></p>
+            
     </div>
+    {% endfor %}
 </div>
 
     
-{% endfor %}
+
 
 {% endblock content %}
