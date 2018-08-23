@@ -1,7 +1,29 @@
 .news {
     padding-top:80px;
 }
-.news h3{
+.news h3,h2{
     text-transform:uppercase;
     text-align:center;
+}
+.news-heading{
+    color:#5b5bc3;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.news-body{
+    padding-top:30px;
+    text-align:left;
+
+}
+.form{
+    margin-top: 60px;
+    border:1px solid #5b5bc3;
+    padding: 1 0px;
+}
+.form input, .form textarea{
+    display:block;
+    margin:20px 0 0 0;
+    padding:5px;
+}
+.form label{
+    font-weight:bold;
 }
